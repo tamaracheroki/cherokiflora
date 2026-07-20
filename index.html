@@ -333,11 +333,11 @@
     .hero-plant {
       position: absolute;
       right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      height: 90%;
+      top: 0;
+      height: 100%;
       width: auto;
       object-fit: contain;
+      object-position: top center;
       pointer-events: none;
       opacity: 0.75;
       z-index: 0;
@@ -347,6 +347,7 @@
     .hero-left > *:not(.hero-plant) {
       position: relative;
       z-index: 1;
+      max-width: 55%;
     }
 
     /* image carousel panel */
