@@ -333,12 +333,20 @@
     .hero-plant {
       position: absolute;
       right: 0;
-      bottom: 0;
-      height: 85%;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 90%;
       width: auto;
       object-fit: contain;
       pointer-events: none;
-      opacity: 0.92;
+      opacity: 0.75;
+      z-index: 0;
+      filter: brightness(0.92);
+    }
+
+    .hero-left > *:not(.hero-plant) {
+      position: relative;
+      z-index: 1;
     }
 
     /* image carousel panel */
