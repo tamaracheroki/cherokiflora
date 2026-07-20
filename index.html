@@ -1396,8 +1396,10 @@
 
       #porque { padding: 2.5rem 1.75rem; }
       .porque-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-      .porque-card { padding: 1.5rem 1.25rem; }
-      .porque-num { font-size: clamp(1.6rem, 5vw, 2rem); margin-bottom: 0.75rem; }
+      .porque-card { padding: 1.25rem 1rem; }
+      .porque-num { font-size: clamp(1.4rem, 4vw, 1.8rem); margin-bottom: 0.6rem; }
+      .porque-card-title { font-size: 1rem; margin-bottom: 0.4rem; }
+      .porque-card-text { font-size: 0.85rem; line-height: 1.55; }
 
       #cta { grid-template-columns: 1fr; padding: 2.5rem 1.75rem; gap: 2.5rem; }
       .cta-title { font-size: clamp(2rem, 7vw, 3rem); }
@@ -2024,12 +2026,14 @@
       requestAnimationFrame(() => mobileMenu.classList.add('open'));
       hamburger.classList.add('open');
       document.body.style.overflow = 'hidden';
+      waBtn.style.display = 'none';
     }
 
     function closeMenu() {
       mobileMenu.classList.remove('open');
       hamburger.classList.remove('open');
       document.body.style.overflow = '';
+      waBtn.style.display = '';
       setTimeout(() => { mobileMenu.style.display = 'none'; }, 300);
     }
 
