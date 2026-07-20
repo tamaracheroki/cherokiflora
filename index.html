@@ -285,8 +285,6 @@
       flex-direction: column;
       justify-content: center;
       padding: 7rem 5rem 4rem;
-      position: relative;
-      overflow: hidden;
     }
 
     .hero-eyebrow {
@@ -330,24 +328,14 @@
       margin-bottom: 3.5rem;
     }
 
-    .hero-plant {
-      position: absolute;
-      right: 0;
-      top: 0;
-      height: 100%;
-      width: auto;
-      object-fit: contain;
-      object-position: top center;
-      pointer-events: none;
-      opacity: 0.75;
-      z-index: 0;
-      filter: brightness(0.92);
-    }
-
-    .hero-left > *:not(.hero-plant) {
-      position: relative;
-      z-index: 1;
-      max-width: 55%;
+    .hero-sub {
+      font-family: 'Darker Grotesque', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--green-mid);
+      max-width: 100%;
+      margin-bottom: 3.5rem;
     }
 
     /* image carousel panel */
@@ -523,7 +511,6 @@
     @media (max-width: 960px) {
       #hero { grid-template-columns: 1fr; }
       .hero-left { padding: 6rem 1.75rem 3rem; }
-      .hero-plant { display: none; }
       .hero-title { font-size: clamp(2.4rem, 8vw, 3.2rem); }
       .hero-sub { font-size: 1.2rem; margin-bottom: 2.5rem; max-width: 100%; }
       .hero-img-track { height: 70vw; position: relative; }
@@ -1591,7 +1578,6 @@
       <div class="hero-rule"></div>
       <p class="hero-sub">Distribución mayorista para viveros, florerías, paisajistas y distribuidores de Misiones, Corrientes, Chaco, Formosa, Entre Ríos, Santa Fe y Buenos Aires. Tres generaciones con las manos en la tierra.</p>
       <a href="https://wa.me/5493765004295?text=Hola%20Cheroki%20Flora%2C%20me%20gustar%C3%ADa%20obtener%20el%20cat%C3%A1logo%20mayorista." class="btn btn-fill" target="_blank" rel="noopener">Solicitar catálogo mayorista</a>
-      <img src="img/portada.png" alt="" class="hero-plant" aria-hidden="true">
     </div>
 
     <div class="hero-img-track" id="heroImgTrack">
