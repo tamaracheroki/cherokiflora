@@ -823,13 +823,51 @@
     .card {
       display: flex;
       flex-direction: column;
+      position: relative;
     }
 
     .card-img {
       overflow: hidden;
       aspect-ratio: 3/4;
-      border-radius: 16px 16px 0 0;
+      border-radius: 16px;
+      position: relative;
     }
+
+    .card-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(20,33,23,0.82) 0%, rgba(20,33,23,0.2) 55%, transparent 100%);
+      border-radius: 16px;
+      pointer-events: none;
+    }
+
+    .card-body {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.25rem;
+      z-index: 1;
+    }
+
+    .card-cat {
+      font-family: 'Darker Grotesque', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(250,248,243,0.65);
+      margin-bottom: 0.4rem;
+    }
+
+    .card-name {
+      font-family: 'TAN Buster', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.18;
+    }
+
+    .card-desc { display: none; }
 
     .card-img img {
       width: 100%;
@@ -840,37 +878,6 @@
     }
 
     .card:hover .card-img img { transform: scale(1.04); }
-
-    .card-body {
-      padding: 1.5rem 0;
-    }
-
-    .card-cat {
-      font-family: 'Darker Grotesque', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--terracotta);
-      margin-bottom: 0.4rem;
-    }
-
-    .card-name {
-      font-family: 'TAN Buster', serif;
-      font-size: 1.55rem;
-      font-weight: 400;
-      color: var(--green-dark);
-      line-height: 1.18;
-    }
-
-    .card-desc {
-      font-family: 'Darker Grotesque', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 400;
-      line-height: 1.75;
-      color: var(--green-mid);
-      margin-top: 0.6rem;
-    }
 
     /* full-width accent banner */
     .card-accent-wide {
@@ -1372,25 +1379,7 @@
 
       #produccion { padding: 2.5rem 1.75rem; }
       .grid-cards { grid-template-columns: 1fr 1fr; gap: 1rem; }
-      .card { position: relative; }
-      .card-img { aspect-ratio: 4/5; border-radius: 16px; }
-      .card-img::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to top, rgba(20,33,23,0.82) 0%, rgba(20,33,23,0.2) 55%, transparent 100%);
-        border-radius: 16px;
-        pointer-events: none;
-      }
-      .card-body {
-        position: absolute;
-        bottom: 0; left: 0; right: 0;
-        padding: 1rem;
-        z-index: 1;
-      }
-      .card-cat { color: rgba(250,248,243,0.65); }
-      .card-name { color: var(--cream); font-size: 1.15rem; }
-      .card-desc { display: none; }
+      .card-img { aspect-ratio: 4/5; }
       .card-accent-wide { flex-direction: column; align-items: flex-start; padding: 2rem 1.75rem; }
 
       #porque { padding: 2.5rem 1.75rem; }
@@ -1420,8 +1409,7 @@
       #misiones { padding: 2rem 1.5rem; }
       #produccion { padding: 2rem 1.5rem; }
       .grid-cards { grid-template-columns: 1fr 1fr; }
-      .card-img { aspect-ratio: 1/1; }
-      .misiones-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+      .card-img { aspect-ratio: 1/1; }      .misiones-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
       .tl-body { padding: 1rem; }
       .tl-text { font-size: 0.95rem; }
       #porque { padding: 2rem 1.5rem; }
