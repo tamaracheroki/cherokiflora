@@ -189,7 +189,82 @@
 
     .nav-links a:hover { color: var(--terracotta); }
 
-    /* ─── HERO ────────────────────────────────────── */
+    /* ─── HAMBURGER MENU ─────────────────────────── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 201;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--green-dark);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    nav.scrolled .nav-hamburger span { background: var(--green-dark); }
+    nav:not(.scrolled) .nav-hamburger span { background: var(--green-dark); }
+
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--green-dark);
+      z-index: 200;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-mobile-menu.open {
+      opacity: 1;
+    }
+
+    .nav-mobile-menu a {
+      font-family: 'TAN Buster', serif;
+      font-size: clamp(1.6rem, 6vw, 2.2rem);
+      font-weight: 400;
+      color: var(--cream);
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+      text-align: center;
+    }
+
+    .nav-mobile-menu a:hover { color: var(--terracotta-mid); }
+
+    .nav-mobile-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.75rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: rgba(250,248,243,0.5);
+      padding: 0.5rem;
+    }
+
+    @media (max-width: 960px) {
+      .nav-hamburger { display: flex; }
+    }
     #hero {
       min-height: 100vh;
       display: grid;
@@ -1457,7 +1532,22 @@
       <li><a href="#faq">Preguntas</a></li>
       <li><a href="#cta">Contacto</a></li>
     </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="nav-mobile-menu" id="navMobileMenu">
+    <button class="nav-mobile-close" id="navMobileClose" aria-label="Cerrar menú">✕</button>
+    <a href="#historia" class="nav-mobile-link">Historia</a>
+    <a href="#misiones" class="nav-mobile-link">Misiones</a>
+    <a href="#produccion" class="nav-mobile-link">Qué producimos</a>
+    <a href="#trabajamos" class="nav-mobile-link">Proceso</a>
+    <a href="#porque" class="nav-mobile-link">Por qué nosotros</a>
+    <a href="#faq" class="nav-mobile-link">Preguntas</a>
+    <a href="#cta" class="nav-mobile-link">Contacto</a>
+  </div>
 
   <!-- HERO -->
   <section id="hero">
@@ -1909,6 +1999,9 @@
     const nav = document.querySelector('nav');
     const waBtn = document.querySelector('.wa-btn');
     const hero = document.getElementById('hero');
+    const hamburger = document.getElementById('navHamburger');
+    const mobileMenu = document.getElementById('navMobileMenu');
+    const mobileClose = document.getElementById('navMobileClose');
 
     const onScroll = () => {
       const heroBottom = hero.getBoundingClientRect().bottom;
@@ -1917,6 +2010,26 @@
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+
+    function openMenu() {
+      mobileMenu.style.display = 'flex';
+      requestAnimationFrame(() => mobileMenu.classList.add('open'));
+      hamburger.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(() => { mobileMenu.style.display = 'none'; }, 300);
+    }
+
+    hamburger.addEventListener('click', openMenu);
+    mobileClose.addEventListener('click', closeMenu);
+    document.querySelectorAll('.nav-mobile-link').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
   </script>
 
   <script>
